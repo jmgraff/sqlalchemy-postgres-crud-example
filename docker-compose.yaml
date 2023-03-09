@@ -1,0 +1,18 @@
+services:
+  postgresql:
+    image: postgres
+    environment:
+      POSTGRES_PASSWORD: postgres
+  adminer:
+    image: adminer
+    ports:
+      - 8080:8080
+  workbench:
+    image: workbench
+    build: container
+    stdin_open: true
+    user: ${UID}:${GID}
+    volumes:
+      - /etc/shadow:/etc/shadow:ro
+      - /etc/passwd:/etc/passwd:ro
+      - ./src:/opt/container
