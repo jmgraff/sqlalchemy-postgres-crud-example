@@ -20,7 +20,7 @@ if __name__ == "__main__":
             session.add(thing)
         session.commit()
 
-        # Get something
+        # Get everything
         things = session.query(Thing).order_by(Thing.name).all()
         for thing in things:
             print(thing.name)
